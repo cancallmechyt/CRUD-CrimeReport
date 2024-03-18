@@ -1,18 +1,4 @@
 const { connection } = require("../db");
-const multer  = require('multer')
-
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, './uploads'); // สร้างโฟลเดอร์ uploads แล้วใช้งาน
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.originalname); 
-//   }
-// });
-
-// const upload = multer({ storage: storage });
-
-// const uploadSingleImage = upload.single('files');
 
 exports.getPost = (req, res) => {
     const userId = req.params.userId;
@@ -129,45 +115,3 @@ exports.deletePost = (req, res) => {
       }
   );
 };
-
-// exports.getUpload = (req, res) => {
-//   // เรียกใช้ middleware สำหรับ upload รูปเดียว
-//   uploadSingleImage(req, res, function (err) {
-//     if (err instanceof multer.MulterError) {
-//       // A Multer error occurred when uploading.
-//       return res.status(500).json(err);
-//     } 
-//     // No errors occurred, continue with handling the response.
-//     console.log('Upload!!');
-//     res.send('Success');
-//   });
-// };
-
-// exports.addPostUpload = (req, res, next) => {
-//   const currentDate = new Date();
-
-//   // เรียกใช้ middleware สำหรับ upload รูปภาพ
-//   upload.single('image')(req, res, function (err) {
-//     if (err instanceof multer.MulterError) {
-//       // Handle Multer error
-//       return res.status(500).json(err);
-//     }
-    
-//     // หากไม่มีข้อผิดพลาดในการอัปโหลด ให้ทำการเพิ่มโพสต์
-//     connection.query(
-//       'INSERT INTO `ptest`(`title`, `userId`, `date`, `images`, `location`, `category`) VALUES (?,?,?,?,?,?)',
-//       [req.body.title, req.body.userId, currentDate, req.file.path, req.body.location, req.body.category],
-//       function(err, results) {
-//         if (err) {
-//           // Handle database insertion error
-//           res.json(err);
-//         } else {
-//           res.send('Post has Create!!');
-//         }
-//       }
-//     );
-//   });
-// };
-
-
-
