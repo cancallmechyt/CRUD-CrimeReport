@@ -2,12 +2,12 @@ const express = require('express');
 const db = require('./db'); 
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-const bcrypt = require('bcrypt');
 const cors = require('cors')
 const axios = require('axios')
 const app = express();
+
 //fix Cors
-app.use(cors({ origin: 'http://localhost:4000' })) // http://localhost:4000 phpmyaddmin , https://crime-beta3.vercel.app 
+app.use(cors({ origin: 'https://crime-beta3.vercel.app' })) // http://localhost:4000 phpmyaddmin , https://crime-beta3.vercel.app 
 app.use(express.json())
 
 const userRouters = require("./routes/user")
